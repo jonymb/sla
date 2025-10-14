@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login - INAC</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    body {
+      background-color: #f8f9fa;
+      display: flex;
+      flex-direction: column;
+    }
+    main {
+      flex: 1;
+      padding-top: 60px;
+      text-align: center;
+    }
+    .navbar-brand img {
+      height: 60px;
+      margin-right: 10px;
+    }
+    footer {
+      background-color: #004080;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    body.dark-mode {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+  </style>
+
+
+</head>
+<body>
+
+
+<nav class="navbar navbar-dark bg-primary justify-content-center">
+  <a class="navbar-brand" href="index.html">
+    <img src="img/logo.png" alt="Logo INAC" />
+    <span class="fs-4 fw-bold text-white">INAC</span>
+  </a>
+</nav>
+
+<div class="text-end p-2 pe-4">
+    <button class="btn btn-outline-dark btn-sm" onclick="alternarTema()" title="Tema">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-moon-stars" viewBox="0 0 16 16">
+        <path d="M6 .278a.768.768 0 0 1 .7.453 7.25 7.25 0 0 0 9.569 9.569.768.768 0 0 1 .453.7A8 8 0 1 1 6 .278z"/>
+        <path d="M10.525 2.1a.5.5 0 0 1 .95 0l.287.86.909.045a.5.5 0 0 1 .276.893l-.703.516.262.872a.5.5 0 0 1-.77.55L11 5.625l-.736.611a.5.5 0 0 1-.77-.55l.262-.872-.703-.516a.5.5 0 0 1 .276-.893l.909-.045.287-.86z"/>
+      </svg>
+    </button>
+  </div>
+  
+<main>
+  <div class="container">
+    <h2 class="mb-4">Escolha como deseja fazer login</h2>
+    <div class="d-grid gap-3 col-md-4 mx-auto mb-4">
+      <a href="login_fisica.html" class="btn btn-primary">Login Pessoa Física</a>
+      <a href="login_juridica.html" class="btn btn-outline-primary">Login Pessoa Jurídica</a>
+    </div>
+    <a href="index.html" class="btn btn-outline-secondary">Voltar para a Página Inicial</a>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p class="mb-0">&copy; 2025 Instituto Nova Ágora de Cidadania</p>
+  </div>
+</footer>
+
+<script>
+  function alternarTema() {
+    document.body.classList.toggle("dark-mode");
+    localStorage.setItem("tema", document.body.classList.contains("dark-mode") ? "dark" : "light");
+  }
+
+  window.addEventListener("DOMContentLoaded", () => {
+    if (localStorage.getItem("tema") === "dark") {
+      document.body.classList.add("dark-mode");
+    }
+  });
+</script>
+
+</body>
+</html>

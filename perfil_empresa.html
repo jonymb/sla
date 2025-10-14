@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Perfil da Empresa - INAC</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    html, body {
+      height: 100%;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      background-color: #f8f9fa;
+    }
+    main {
+      flex: 1;
+    }
+    .logo-preview {
+      height: 100px;
+      border-radius: 12px;
+      border: 2px solid #004080;
+      object-fit: cover;
+    }
+    footer {
+      background-color: #004080;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+    .progress {
+      height: 25px;
+    }
+    .progress-bar {
+      font-weight: bold;
+    }
+    .badge-custom {
+      background-color: #004080;
+      color: white;
+    }
+    .card-section {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+    body.dark-mode {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+    body.dark-mode .card,
+    body.dark-mode .list-group-item,
+    body.dark-mode .progress,
+    body.dark-mode .card-section {
+      background-color: #1f1f1f;
+      color: #fff;
+      border-color: #444;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-primary justify-content-center">
+  <a class="navbar-brand d-flex align-items-center" href="index.html">
+    <img src="img/logo.png" alt="Logo INAC" style="height: 40px; margin-right: 10px;" />
+    INAC
+  </a>
+</nav>
+
+<!-- Botão Tema -->
+<div class="text-end p-2 pe-4">
+  <button class="btn btn-outline-dark btn-sm" onclick="alternarTema()" title="Tema">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-moon-stars" viewBox="0 0 16 16">
+      <path d="M6 .278a.768.768 0 0 1 .7.453 7.25 7.25 0 0 0 9.569 9.569.768.768 0 0 1 .453.7A8 8 0 1 1 6 .278z"/>
+      <path d="M10.525 2.1a.5.5 0 0 1 .95 0l.287.86.909.045a.5.5 0 0 1 .276.893l-.703.516.262.872a.5.5 0 0 1-.77.55L11 5.625l-.736.611a.5.5 0 0 1-.77-.55l.262-.872-.703-.516a.5.5 0 0 1 .276-.893l.909-.045.287-.86z"/>
+    </svg>
+  </button>
+</div>
+
+<main class="container py-4">
+  <div class="text-center mb-4">
+    <img src="img/empresa.png" alt="Logo da Empresa" class="logo-preview mb-2" />
+    <h3 class="mt-2">Empresa Exemplo LTDA</h3>
+    <p class="text-muted">Responsável: João da Silva</p>
+    <div class="mt-3 text-center mb-4">
+      <button class="btn btn-outline-primary m-1" onclick="window.location.href='editar_perfil_empresa.html'">Editar Perfil</button>
+      <button class="btn btn-outline-primary m-1" onclick="window.location.href='alterar_senha_empresa.html'">Alterar Senha</button>
+      <button class="btn btn-outline-primary m-1" onclick="window.location.href='historico_descartes.html'">Histórico de Descartes</button>
+      <button class="btn btn-outline-primary m-1" onclick="window.location.href='notificacoes.html'">Notificações Ambientais</button>
+      <button class="btn btn-outline-primary m-1" onclick="window.location.href='pontos_coleta.html'">Pontos de Coleta</button>
+      <button class="btn btn-outline-danger m-1" onclick="sair()">Sair</button>
+    </div>
+  </div>
+
+  <div class="row g-4">
+
+    <div class="col-md-6">
+      <div class="card-section">
+        <h5 class="mb-3">📋 Informações da Empresa</h5>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">CNPJ: 00.000.000/0001-00</li>
+          <li class="list-group-item">E-mail: empresa@email.com</li>
+          <li class="list-group-item">Telefone: (11) 99999-9999</li>
+          <li class="list-group-item">Endereço: Rua Exemplo, 123 - SP</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card-section">
+        <h5 class="mb-3">📈 Pontuação Sustentável</h5>
+        <p class="mb-1"><strong>Pontos acumulados:</strong> 3.500</p>
+        <div class="progress mb-2">
+          <div class="progress-bar bg-success" style="width: 35%;">3.500 / 10.000 pts</div>
+        </div>
+        <small class="text-muted">Próximo benefício: Consultoria sustentável</small>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="card-section">
+        <h5 class="mb-3">🏆 Conquistas</h5>
+        <div class="d-flex flex-wrap gap-2">
+          <span class="badge badge-custom p-2">Primeiro Descarte Empresarial</span>
+          <span class="badge badge-custom p-2">Empresa Sustentável - 1.000 pts</span>
+          <span class="badge badge-custom p-2">Parceira Verde - 2.500 pts</span>
+          <span class="badge badge-custom p-2">Rumo ao Selo INAC</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12 text-center">
+      <button class="btn btn-success mt-3" onclick="mostrarRecompensas()">🎁 Ver Recompensas</button>
+    </div>
+
+    <div id="recompensas" class="col-md-12 d-none">
+      <div class="card-section mt-3">
+        <h5 class="text-center mb-4">Recompensas para Empresas</h5>
+        <div class="row g-3">
+          <div class="col-md-4">
+            <div class="card p-3 text-center">
+              <h6>📜 Certificado Ambiental</h6>
+              <p>Disponível com 1.000 pontos</p>
+              <span class="badge bg-success">1.000 pts</span>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card p-3 text-center">
+              <h6>🌿 Selo Verde INAC</h6>
+              <p>Receba no seu site com 2.500 pontos</p>
+              <span class="badge bg-primary">2.500 pts</span>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card p-3 text-center">
+              <h6>🤝 Divulgação como Parceira</h6>
+              <p>Alcance 5.000 pontos</p>
+              <span class="badge bg-warning text-dark">5.000 pts</span>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card p-3 text-center">
+              <h6>📊 Consultoria Sustentável</h6>
+              <p>Grátis a partir de 10.000 pontos</p>
+              <span class="badge bg-info text-dark">10.000 pts</span>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card p-3 text-center">
+              <h6>🏆 Reconhecimento Público</h6>
+              <p>Destaque nos canais do INAC</p>
+              <span class="badge bg-dark">15.000 pts</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p class="mb-0">&copy; 2025 Instituto Nova Ágora de Cidadania</p>
+  </div>
+</footer>
+
+<script>
+  function alternarTema() {
+    document.body.classList.toggle("dark-mode");
+    localStorage.setItem("tema", document.body.classList.contains("dark-mode") ? "dark" : "light");
+  }
+
+  function sair() {
+    window.location.href = "index.html";
+  }
+
+  function mostrarRecompensas() {
+    const box = document.getElementById("recompensas");
+    box.classList.toggle("d-none");
+  }
+
+  window.addEventListener("DOMContentLoaded", () => {
+    if (localStorage.getItem("tema") === "dark") {
+      document.body.classList.add("dark-mode");
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Alterar Senha - Empresa</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      background-color: #f8f9fa;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 0;
+    }
+    .navbar-brand img {
+      height: 60px;
+      margin-right: 10px;
+    }
+    footer {
+      background-color: #004080;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    /* Dark Mode */
+    body.dark-mode {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+    body.dark-mode .form-control,
+    body.dark-mode .btn,
+    body.dark-mode .navbar,
+    body.dark-mode footer,
+    body.dark-mode .bg-white {
+      background-color: #1f1f1f !important;
+      color: #fff !important;
+      border-color: #444 !important;
+    }
+    body.dark-mode .btn-outline-dark {
+      color: #fff;
+      border-color: #ccc;
+    }
+    body.dark-mode .btn-outline-dark:hover {
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-primary justify-content-center">
+  <a class="navbar-brand" href="index.html">
+    <img src="img/logo.png" alt="Logo INAC" />
+    <span class="fs-4 fw-bold text-white">INAC</span>
+  </a>
+</nav>
+
+<div class="text-end p-2 pe-4">
+  <button class="btn btn-outline-dark btn-sm" onclick="alternarTema()" title="Tema">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-moon-stars" viewBox="0 0 16 16">
+      <path d="M6 .278a.768.768 0 0 1 .7.453 7.25 7.25 0 0 0 9.569 9.569.768.768 0 0 1 .453.7A8 8 0 1 1 6 .278z"/>
+      <path d="M10.525 2.1a.5.5 0 0 1 .95 0l.287.86.909.045a.5.5 0 0 1 .276.893l-.703.516.262.872a.5.5 0 0 1-.77.55L11 5.625l-.736.611a.5.5 0 0 1-.77-.55l.262-.872-.703-.516a.5.5 0 0 1 .276-.893l.909-.045.287-.86z"/>
+    </svg>
+  </button>
+</div>
+
+<main>
+  <div class="container" style="max-width: 500px;">
+    <div class="bg-white shadow p-4 rounded">
+      <h3 class="mb-4 text-center">Alterar Senha da Empresa</h3>
+      <form id="formSenhaEmpresa">
+        <div class="mb-3">
+          <label for="senhaAtual" class="form-label">Senha Atual</label>
+          <input type="password" class="form-control" id="senhaAtual" required>
+        </div>
+        <div class="mb-3">
+          <label for="novaSenha" class="form-label">Nova Senha</label>
+          <input type="password" class="form-control" id="novaSenha" required>
+        </div>
+        <div class="mb-3">
+          <label for="confirmarSenha" class="form-label">Confirmar Nova Senha</label>
+          <input type="password" class="form-control" id="confirmarSenha" required>
+        </div>
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+        </div>
+        <div id="mensagem" class="mt-3 text-center text-success d-none">Senha alterada com sucesso!</div>
+        <div class="text-center mt-3">
+          <a href="perfil_empresa.html" class="btn btn-outline-secondary">Voltar para o Perfil da Empresa</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container text-center">
+    <p class="mb-0">&copy; 2025 Instituto Nova Ágora de Cidadania</p>
+  </div>
+</footer>
+
+<script>
+  function alternarTema() {
+    document.body.classList.toggle('dark-mode');
+    localStorage.setItem('tema', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+  }
+
+  window.addEventListener("DOMContentLoaded", () => {
+    if (localStorage.getItem("tema") === "dark") {
+      document.body.classList.add("dark-mode");
+    }
+  });
+
+  document.getElementById("formSenhaEmpresa").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const nova = document.getElementById("novaSenha").value;
+    const confirmar = document.getElementById("confirmarSenha").value;
+    const msg = document.getElementById("mensagem");
+
+    if (nova !== confirmar) {
+      alert("As senhas não coincidem.");
+      return;
+    }
+
+    msg.classList.remove("d-none");
+
+    setTimeout(() => {
+      msg.classList.add("d-none");
+      window.location.href = "perfil_empresa.html";
+    }, 2000);
+  });
+</script>
+
+</body>
+</html>
